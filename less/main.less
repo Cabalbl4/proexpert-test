@@ -1,0 +1,34 @@
+@import "variables.less";
+@import "component.less";
+@import "locationPicker.less";
+@import "dataDisplay.less";
+body {
+    background: @body-background;
+    font-family: @font-family;
+    padding: 0px;
+    margin: 0px;
+} 
+
+#main { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+@media (max-width: @hanheld-screen-px) {
+    #main {
+        margin: 0px; 
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    body {
+        margin: 0px;
+        overflow-x: hidden; 
+        max-width: 100vw;
+        overflow-y:scroll;
+        background: none; 
+        background-color: @component-body-color;
+    }
+} 

@@ -1,0 +1,25 @@
+.component {
+    background-color: @component-body-color;
+    box-shadow: @component-box-shadow;
+    color: @component-font-color;
+    width: 70vw;
+    height: 80vh;
+}
+
+@media (max-width: @hanheld-screen-px) {
+    .component {
+        width: 100vw;
+        height: 100vh;
+        box-shadow: none;
+    }
+
+
+}
+ 
+@media (min-width: @hanheld-screen-px) {
+    .component {
+        max-height: 600px;
+    }
+
+}
+

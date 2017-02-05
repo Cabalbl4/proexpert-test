@@ -1,0 +1,86 @@
+
+.location-picker {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.location-picker .name-input {
+    text-align: center;
+    font-size: 33px;
+    font-weight: bold;
+} 
+
+.location-picker .name-input > input {
+    border: none;
+    border-bottom: 2px solid @location-linecolor;
+    text-align: center;
+    font-size: 33px;
+    color: @location-input-text-color;
+    box-shadow: none;
+}
+
+.location-picker .name-input > input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid @location-linecolor;
+}
+
+.location-picker .location-orspacer {
+    margin: 6px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+.location-picker .location-linkholder {
+    font-size: 22px;
+}
+
+.location-picker .location-geo-link {
+    color: @component-font-color;
+    text-decoration: none;
+    border-bottom: 1px dashed @location-linecolor;
+}
+
+.location-picker .name-input > button {
+    border: none;
+    width: 25px;
+    margin-left: -25px;
+    padding: 0;
+    background: none;
+    color: @location-linecolor;
+    position: absolute;
+    margin-top: 5px;
+}
+
+.location-picker .name-input > button .material-icons {
+    font-size: 30px;
+}
+
+.location-picker .name-input > button:focus,
+.location-picker .name-input > button:active,
+.location-picker .name-input > button:hover
+ {
+    border: none;
+    outline: none;
+}
+
+.location-picker .name-input > button:hover {
+    color: @picker-search-button-hover;
+}
+
+@media (max-width: @hanheld-screen-px) {
+   .location-picker .name-input {
+       width: 100vw;
+       min-width: 100vw;
+       overflow-x: hidden;
+
+   }
+   .location-picker .name-input input {
+       width: 100vw;
+       min-width: 100vw;
+   }
+   .location-picker .name-input button {
+       right: 25px;
+   }
+}
