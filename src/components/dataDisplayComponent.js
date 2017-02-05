@@ -79,7 +79,7 @@ class DataDisplay extends React.Component {
      for(let idx in weather.list) {
             const forecast = weather.list[idx];
             const dayname = momentData.format("dddd"); 
-            const temp = this._tempConvert(this._parseCurrentTemp(weather.list[0].temp)) + "°"+this._tempScale;
+            const temp = this._tempConvert(weather.list[0].temp.day) + "°"+this._tempScale;
             const icon = this._weatherNameToImgClass(forecast.weather[0].main);
             forecasts.push( <div key={idx}>
                 <div className="day-name">
