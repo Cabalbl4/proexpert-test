@@ -34,6 +34,22 @@ var DataDisplay = function (_React$Component) {
     }
 
     _createClass(DataDisplay, [{
+        key: "_parseCurrentTemp",
+        value: function _parseCurrentTemp(_object) {
+            var hours = new Date().getHours();
+            if (hours < 6) {
+                return _object.night;
+            } else if (hours < 12) {
+                return _object.morn;
+            } else if (hours < 18) {
+                return _object.day;
+            } else if (hours < 22) {
+                return _object.eve;
+            } else {
+                return _object.night;
+            }
+        }
+    }, {
         key: "_farenheitToCelsius",
         value: function _farenheitToCelsius(_grad) {
             return (_grad - 32) * (5 / 9);
@@ -87,7 +103,7 @@ var DataDisplay = function (_React$Component) {
             for (var idx in weather.list) {
                 var forecast = weather.list[idx];
                 var dayname = momentData.format("dddd");
-                var temp = this._tempConvert(forecast.temp.day) + "°" + this._tempScale;
+                var temp = this._tempConvert(this._parseCurrentTemp(weather.list[0].temp)) + "°" + this._tempScale;
                 var icon = this._weatherNameToImgClass(forecast.weather[0].main);
                 forecasts.push(React.createElement(
                     "div",
@@ -151,7 +167,7 @@ var DataDisplay = function (_React$Component) {
                     React.createElement(
                         "div",
                         { className: "temperature" },
-                        this._tempConvert(weather.list[0].temp.day) + "°" + this._tempScale
+                        this._tempConvert(this._parseCurrentTemp(weather.list[0].temp)) + "°" + this._tempScale
                     ),
                     React.createElement(
                         "div",

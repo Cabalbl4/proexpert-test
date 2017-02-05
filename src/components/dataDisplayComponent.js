@@ -18,6 +18,21 @@ class DataDisplay extends React.Component {
 
   }
 
+  _parseCurrentTemp(_object) {
+      const hours= new Date().getHours();
+      if(hours < 6) {
+          return _object.night;
+      } else if( hours < 12 ) {
+          return _object.morn;
+      } else if( hours < 18 ) {
+          return _object.day;
+      } else if (hours < 22) {
+          return _object.eve;
+      } else {
+          return _object.night;
+      }
+  };
+
   _farenheitToCelsius(_grad) {
       return (_grad - 32) * (5/9);
   };
@@ -64,7 +79,7 @@ class DataDisplay extends React.Component {
      for(let idx in weather.list) {
             const forecast = weather.list[idx];
             const dayname = momentData.format("dddd"); 
-            const temp = this._tempConvert(forecast.temp.day) + "°"+this._tempScale;
+            const temp = this._tempConvert(this._parseCurrentTemp(weather.list[0].temp)) + "°"+this._tempScale;
             const icon = this._weatherNameToImgClass(forecast.weather[0].main);
             forecasts.push( <div key={idx}>
                 <div className="day-name">
@@ -99,7 +114,7 @@ class DataDisplay extends React.Component {
              </div> 
              <div className="main-weather-screen">
                 <div className="temperature">
-                    {this._tempConvert(weather.list[0].temp.day)+ "°" +this._tempScale}
+                    {this._tempConvert(this._parseCurrentTemp(weather.list[0].temp))+ "°" +this._tempScale}
                 </div>
                 <div className="icon">
                    <div className={ this._weatherNameToImgClass(weather.list[0].weather[0].main)}></div> 
